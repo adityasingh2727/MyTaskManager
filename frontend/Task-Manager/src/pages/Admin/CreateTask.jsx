@@ -8,6 +8,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import moment from "moment";
 import { LuTrash2 } from "react-icons/lu";
 import SelectDropdown from '../../components/Inputs/SelectDropdown';
+import SelectUsers from '../../components/Inputs/SelectUsers';
 
 const CreateTask = () => {
 
@@ -140,6 +141,18 @@ const CreateTask = () => {
               }
               type='date'
             />  
+            </div>
+
+            <div className=' col-span-12 md:col-span-3'>
+              <label className='text-xs font-medium text-slate-600'>
+                Assign To
+              </label>
+              <SelectUsers
+                 selectedUsers= {taskData.assignedTo}
+                 setSelectedUsers = {(value) => {
+                    handleValueChange("assignedTo", value)
+                 }}
+                 />
             </div>
           </div>
         </div>
