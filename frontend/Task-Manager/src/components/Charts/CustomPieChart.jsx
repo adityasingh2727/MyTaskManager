@@ -35,4 +35,4 @@ const CustomPieChart = ({data, colors}) => {
   )
 }
 
-export default CustomPieChart
+export default CustomPieChart;
