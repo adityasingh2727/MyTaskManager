@@ -61,7 +61,36 @@ const CreateTask = () => {
   }
 
   const handleSubmit = async () => {
-    
+        setError(null);
+
+        // Input validation
+        if (!taskData.title.trim) {
+          setError("Title is required.");
+          return;
+        }
+        if (!taskData.description.trim()) {
+          setError("Description is required.")
+          return;
+        }
+        if (!taskData.dueDate) {
+          setError("Due date is required.")
+          return;
+        }
+        if (!taskData.assignedTo?.length === 0) {
+          setError("Task not assigned to any member.")
+          return;
+        }
+        if (!taskData.todoChecklist?.length === 0) {
+          setError("Add at least one todo task.")
+          return;
+        }
+        if (taskId) {
+          updateTask()
+          return;
+        }
+
+        createTask();
+
   }
 
   const getTaskDetailsByID = async () => {
@@ -166,6 +195,19 @@ const CreateTask = () => {
                 handleValueChange("todoChecklist", value)
                }
                />
+          </div>
+
+          {error && (
+            <p className='test-xs font-medium text-red-500 mt-5'>{error}</p>
+          )}
+          <div className='flex justify-end mt-7'>
+            <button
+                className='add-btn'
+                onClick={handleSubmit}
+                disabled={loading}
+            >
+              {taskId ? "UPDATE TASK" : "CREATE TASK"}
+            </button>
           </div>
         </div>
       </div>
