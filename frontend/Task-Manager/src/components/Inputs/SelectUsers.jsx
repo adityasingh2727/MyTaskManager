@@ -30,7 +30,7 @@ const SelectUsers = ({selectedUsers , setSelectedUsers}) => {
         )
     }
 
-    const hadnleAssign = () => {
+    const handleAssign = () => {
         setSelectedUsers(tempSelectedUsers);
         setIsModalOpen(false);
     };
@@ -70,7 +70,7 @@ const SelectUsers = ({selectedUsers , setSelectedUsers}) => {
         onClose={() => setIsModalOpen(false)}
         title= "Select Users"
         >
-            <div className='space-y h-[60vh] overflow-y-auto'>
+            <div className='space-y-4 h-[60vh] overflow-y-auto'>
                 {allUsers.map((user) => (
                     <div 
                       key={user._id}
@@ -96,12 +96,11 @@ const SelectUsers = ({selectedUsers , setSelectedUsers}) => {
                     </div>
                 ))}
             </div>
-
-            <div className='flex justify-end gap-4 pt-4 '>
-                <button className='card-btn mb-8' onClick={() => setIsModalOpen(false)}> 
+            <div className='flex justify-end gap-4 pt-4 border-t border-gray-200 mt-4'>
+                <button className='card-btn' onClick={() => setIsModalOpen(false)}> 
                     CANCEL
                 </button>
-                <button className='card-btn-fill mb-8 mr-4' onClick={hadnleAssign}>
+                <button className='card-btn-fill' onClick={handleAssign}>
                     DONE
                 </button>
             </div>
@@ -110,4 +109,4 @@ const SelectUsers = ({selectedUsers , setSelectedUsers}) => {
   )
 }
 
-export default SelectUsers
+export default SelectUsers;
